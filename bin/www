@@ -33,12 +33,11 @@ server.on('error', onError);
 server.on('listening', onListening);
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://172.16.14.114:27017/anonymity', function(err) {
+mongoose.connect('mongodb://localhost:27017/anonymity', function(err) {
     if(err) {
         console.log('链接失败');
     } else {
-
-        console.log('数据库连接成功之后在开启服务');
+        console.log('数据库连接成功,正在开启服务');
         server.listen(port);
     }
 });

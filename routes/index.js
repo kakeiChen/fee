@@ -1,3 +1,4 @@
+var Project = require('../modal/projectlist');
 var express = require('express');
 var router = express.Router();
 
@@ -94,8 +95,14 @@ router.post('/user/getdetail', function(req, res, next) {
         responseData.resultDesc = '获取数据成功';
         res.json(responseData);
         return;
-
     })
+});
+
+router.get('/projectlist',function (req, res, next) {
+    Project.find({},function (err,docs) {
+        console.log(docs);
+        res.json(docs);
+    });
 });
 
 module.exports = router;
