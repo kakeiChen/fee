@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/user/submitDetail', function(req, res, next) {
+router.post('/submitDetail', function(req, res, next) {
 
     var params = req.body;
     // console.log(req.body);
@@ -47,7 +47,7 @@ router.post('/user/submitDetail', function(req, res, next) {
     })
 });
 
-router.post('/user/getdetail', function(req, res, next) {
+router.post('/getdetail', function(req, res, next) {
     Speech.find({
         id: req.body.id
     }).then(function(info) {
@@ -57,9 +57,9 @@ router.post('/user/getdetail', function(req, res, next) {
         for (var i = 0; i < info.length; i += 1) {
             averageScore += parseFloat(info[i].score);
             var obj = {};
-            var meritF = info[i].meritF + info[i].meritScoreF;
-            var meritS = info[i].meritS + info[i].meritScoreS;
-            var meritT = info[i].meritT + info[i].meritScoreT;
+            var meritF = info[i].meritF + '   ' + info[i].meritScoreF;
+            var meritS = info[i].meritS + '   ' + info[i].meritScoreS;
+            var meritT = info[i].meritT + '   ' + info[i].meritScoreT;
 
             var merit = [meritF, meritS, meritT];
 
@@ -69,9 +69,9 @@ router.post('/user/getdetail', function(req, res, next) {
                 info[i].suggestT
             ];
 
-            var defectF = info[i].defectF + info[i].defectScoreF;
-            var defectS = info[i].defectS + info[i].defectScoreS;
-            var defectT = info[i].defectT + info[i].defectScoreT;
+            var defectF = info[i].defectF + '   ' + info[i].defectScoreF;
+            var defectS = info[i].defectS + '   ' + info[i].defectScoreS;
+            var defectT = info[i].defectT + '   ' + info[i].defectScoreT;
 
 
             var defect = [defectF, defectS, defectT];
