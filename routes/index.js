@@ -87,7 +87,7 @@ router.post('/getdetail', function(req, res, next) {
         }
         // console.log(averageScore)
         if (info.length) {
-            averageScore = (averageScore / info.length);
+            averageScore = (averageScore / info.length).toFixed(2);
         }
         // console.log(averageScore)
         responseData.resultData = {};
