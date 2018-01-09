@@ -10,11 +10,11 @@ const Schema = mongoose.Schema;
 
 const projectSchema = new Schema({
     id:Number,
-    share_name:String,
-    time:String,
-    content:String,
-    project_name: String,
-    project_status:Boolean,
+    title:String,
+    shareTime:String,
+    description:String,
+    sharer: String,
+    flag:String,
 })
 
 // projectSchema.index({id: 1});
