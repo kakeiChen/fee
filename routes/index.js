@@ -99,10 +99,15 @@ router.post('/user/getdetail', function(req, res, next) {
     })
 });
 
-router.get('/projectlist',function (req, res, next) {
+router.post('/projectlist',function (req, res, next) {
     Project.find({},function (err,docs) {
-        console.log(docs);
-        res.json(docs);
+        res.json({
+            resultCode:0,
+            resultData:{
+                list:docs
+            },
+            resultDesc:"请求成功"
+        });
     });
 });
 
