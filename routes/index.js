@@ -25,11 +25,12 @@ router.get('/', function(req, res, next) {
 router.post('/user/submitDetail', function(req, res, next) {
 
     var params = req.body;
-    console.log(req.body);
+    // console.log(req.body);
 
-    Speech.findOne({
-        // id: req.body.id
+    Project.findOne({
+        id: req.body.id
     }).then(function(info) {
+        // console.log(info);
         if (!info) {
             responseData.resultDesc = '项目不存在，请先创建项目';
             responseData.resultCode = '1';
@@ -39,7 +40,7 @@ router.post('/user/submitDetail', function(req, res, next) {
         var speech = new Speech(req.body);
         return speech.save();
     }).then(function(newuserInfo) {
-        console.log(newuserInfo);
+        // console.log(newuserInfo);
         responseData.resultDesc = '提交成功';
         res.json(responseData);
         return;
