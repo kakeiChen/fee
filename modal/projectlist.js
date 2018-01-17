@@ -9,7 +9,7 @@ var ProjectData = require('../InitData/initProject');
 const Schema = mongoose.Schema;
 
 const projectSchema = new Schema({
-    id:Number,
+    id:String,
     title:String,
     shareTime:String,
     description:String,

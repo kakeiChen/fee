@@ -25,12 +25,14 @@ router.get('/', function(req, res, next) {
 router.post('/submitDetail', function(req, res, next) {
 
     var params = req.body;
-    // console.log(req.body);
+    console.log(req.body);
+    console.log(req.body.id);
+    console.log(typeof req.body.id);
 
     Project.findOne({
         id: req.body.id
     }).then(function(info) {
-        // console.log(info);
+        console.log(info);
         if (!info) {
             responseData.resultDesc = '项目不存在，请先创建项目';
             responseData.resultCode = '1';
@@ -100,7 +102,16 @@ router.post('/getdetail', function(req, res, next) {
 });
 
 router.post('/projectlist',function (req, res, next) {
-    Project.find({},function (err,docs) {
+    //Project.find({},function (err,docs) {
+    //    res.json({
+    //        resultCode:0,
+    //        resultData:{
+    //            list:docs
+    //        },
+    //        resultDesc:"请求成功"
+    //    });
+    //});
+    Project.find({}).sort({shareTime:-1}).exec(function (err,docs) {
         res.json({
             resultCode:0,
             resultData:{
@@ -108,7 +119,7 @@ router.post('/projectlist',function (req, res, next) {
             },
             resultDesc:"请求成功"
         });
-    });
+    })
 });
 
 module.exports = router;
